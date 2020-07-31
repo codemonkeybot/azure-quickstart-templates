@@ -73,13 +73,13 @@
     "variables": {
       "imagePublisher": "Canonical",
       "imageOffer": "UbuntuServer",
-      "nicName": "myVMNic",
-      "nsgName": "myNSG",
+      "nicName": "nicJmeter",
+      "nsgName": "nsgJmeter",
       "addressPrefix": "10.0.0.0/16",
       "subnetName": "Subnet",
       "subnetPrefix": "10.0.0.0/24",
-      "publicIPAddressName": "myPublicIP",
-      "virtualNetworkName": "MyVNET",
+      "publicIPAddressName": "pipJmeter",
+      "virtualNetworkName": "vnnJmeter",
       "linuxConfiguration": {
         "disablePasswordAuthentication": true,
         "ssh": {
