@@ -2,9 +2,9 @@
 
 logger -t devvm "Install started: $?"
 
-logger -t devvm "Installing KDE $?"
+logger -t devvm "Installing  plasma KDE $?"
 
-sudo apt install -q -y kde-full 
+sudo apt-get install -q -y plasma-desktop
 
 sudo apt-get -q -y update
 sudo apt-get -q -y upgrade
