@@ -4,9 +4,7 @@ logger -t devvm "Install started: $?"
 
 logger -t devvm "Installing  plasma KDE $?"
 
-sudo apt-get install -q -y tasksel
-sudo tasksel install kubuntu-desktop
-
+sudo apt-get install -q -y  kubuntu-desktop
 
 sudo apt-get -q -y update
 sudo apt-get -q -y upgrade
