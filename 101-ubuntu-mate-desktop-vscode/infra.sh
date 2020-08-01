@@ -52,9 +52,7 @@ sudo apt-get -q -y update
 
 sudo apt-get -q -y upgrade
 
-sudo apt-get -q -y x2goserver 
-
-sudo apt-get -q -y x2goserver-xsession
+sudo apt-get install -q -y x2goserver x2goserver-xsession
 
 logger -t devvm "Installed X2Go Server $?"
 
