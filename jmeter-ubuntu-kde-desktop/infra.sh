@@ -6,13 +6,7 @@ logger -t devvm "Installing KDE Desktop ... $?"
 
 sudo dpkg --configure -a
 
-sudo apt install -q -y kde-plasma-desktop
-sudo apt install -q -y kde-runtime
-sudo apt install --no-install-recommends -q -y kubuntu-desktop
-
-sudo apt-get -q -y update
-
-sudo apt-get -q -y upgrade
+sudo apt-get install -q -y kde-standard
 
 logger -t devvm "KDE Desktop installed. $?"
 
