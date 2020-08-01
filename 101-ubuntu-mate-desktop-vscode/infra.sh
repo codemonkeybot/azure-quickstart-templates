@@ -1,19 +1,6 @@
 #!/bin/bash
 
 logger -t devvm "Install started: $?"
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-
-apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
-
-sudo apt-get install -y apt-transport-https
-
-sudo apt-get -q -y update 
-
-sudo apt-get install -q -y azure-cli
-
-logger -t devvm "Azure-cli installed: $?"
-
-sudo apt-get -q -y update
 
 logger -t devvm "Installing KDE Desktop ... $?"
 
