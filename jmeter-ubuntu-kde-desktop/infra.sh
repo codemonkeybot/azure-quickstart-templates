@@ -4,9 +4,7 @@ logger -t devvm "Install started: $?"
 
 logger -t devvm "Installing KDE $?"
 
-sudo apt install -q -y kde-plasma-desktop
-sudo apt install -q -y kde-runtime
-sudo apt install --no-install-recommends -q -y kubuntu-desktop
+sudo apt install -q -y kde-full 
 
 sudo apt-get -q -y update
 sudo apt-get -q -y upgrade
