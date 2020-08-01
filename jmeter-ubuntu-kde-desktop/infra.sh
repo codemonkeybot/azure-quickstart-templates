@@ -6,7 +6,7 @@ logger -t devvm "Installing  plasma KDE $?"
 
 sudo apt-get install -q -y tasksel
 sudo tasksel install kubuntu-desktop
-sudo service lightdm start
+
 
 sudo apt-get -q -y update
 sudo apt-get -q -y upgrade
