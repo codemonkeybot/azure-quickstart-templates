@@ -2,13 +2,16 @@
 
 logger -t devvm "Install started: $?"
 
-logger -t devvm "Installing KDE Desktop ... $?"
+logger -t devvm "Installing KDE $?"
 
-sudo dpkg --configure -a
+sudo apt install -q -y kde-plasma-desktop
+sudo apt install -q -y kde-runtime
+sudo apt install --no-install-recommends -q -y kubuntu-desktop
 
-sudo apt-get install -q -y kde-standard
+sudo apt-get -q -y update
+sudo apt-get -q -y upgrade
 
-logger -t devvm "KDE Desktop installed. $?"
+logger -t devvm "Installed KDE $?"
 
 logger -t devvm "Installing AZUL Java $?"
 
