@@ -5,59 +5,87 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy ma
 
 apt-key adv --keyserver packages.microsoft.com --recv-keys 52E16F86FEE04B979B07E28DB02C46DF417A0893
 
-apt-get install -y apt-transport-https
+sudo apt-get install -y apt-transport-https
 
-apt-get update && sudo apt-get install -y azure-cli
+sudo apt-get -q -y update 
+
+sudo apt-get install -q -y azure-cli
 
 logger -t devvm "Azure-cli installed: $?"
 
-sudo apt-get -y update
+sudo apt-get -q -y update
 
-sudo apt-get -q=2 -y install xrdp
-
-logger -t devvm "XRDP installed: $?"
-
-logger -t devvm "Installing Mate Desktop ..."
+logger -t devvm "Installing KDE Desktop ... $?"
 
 sudo dpkg --configure -a
 
-sudo apt-add-repository -y ppa:ubuntu-mate-dev/ppa
+sudo apt-add-repository -y ppa:kubuntu-ppa/ppa
 
-sudo apt-add-repository -y ppa:ubuntu-mate-dev/trusty-mate
+sudo apt-get -q -y update
 
-sudo apt-get -y update
+sudo apt-get -q -y upgrade
 
-sudo apt-get -y upgrade
+sudo apt-get install -q -y kubuntu-desktop
 
-sudo apt-get install -q=2  --no-install-recommends -m ubuntu-mate-core
+logger -t devvm "KDE Desktop installed. $?"
 
-sudo apt-get install -q=2  --no-install-recommends -m ubuntu-mate-desktop
+logger -t devvm "Installing AZUL Java $?"
 
-logger -t devvm "Mate Desktop installed. $?"
+sudo apt-get -q -y --no-install-recommends install gnupg locales 
 
-echo mate-session >~/.xsession
+sudo locale-gen en_US.UTF-8 
+    
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 
+    
+sudo apt-add-repository "deb http://repos.azulsystems.com/ubuntu stable main" 
+    
+sudo apt-get -q -y update 
 
-sudo service xrdp restart
+sudo apt-get -q -y dist-upgrade 
 
-# Fixes the issue with Ubuntu desktop being blank.
+sudo apt-get -q -y --no-install-recommends install zulu-8=8.46.0.19 
+    
+sudo rm -rf /var/lib/apt/lists/*
 
-sudo sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+logger -t devvm "Installed AZUL Java $?"
 
-logger -t devvm "Mate Desktop configured. $?"
+logger -t devvm "Installing Software-Properites: $?"
 
-logger -t devvm "Installing VSCode: $?"
+apt-get install -q -y software-properties
 
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+logger -t devvm "Software-Properties installed: $?"
 
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+logger -t devvm "Installing X2Go Server $?"
 
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo dpkg --configure -a
 
-sudo apt-get update
+sudo apt-add-repository -y ppa:x2go/stable
 
-sudo apt-get install -y code
+sudo apt-get -q -y update
 
-logger -t devvm "VSCode Installed: $?"
+sudo apt-get -q -y upgrade
+
+sudo apt-get -q -y x2goserver 
+
+sudo apt-get -q -y x2goserver-xsession
+
+logger -t devvm "Installed X2Go Server $?"
+
+logger -t devvm "Installing JMeter 5.3 $?"
+
+sudo mkdir -p /tmp/dependencies  
+
+sudo curl -L --silent https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.3.tgz >  /tmp/dependencies/apache-jmeter-5.3.tgz  
+
+sudo mkdir -p /opt  
+
+sudo tar -xzf /tmp/dependencies/apache-jmeter-5.3.tgz -C /opt  
+
+sudo rm -rf /tmp/dependencies
+
+sudo ufw allow from any to any port 9091 proto tcp
+
+logger -t devvm "Completed JMeter 5.3 $?"
 
 logger -t devvm "Success"
 exit 0
