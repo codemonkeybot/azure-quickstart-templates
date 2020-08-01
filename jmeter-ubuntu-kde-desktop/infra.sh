@@ -4,7 +4,6 @@ logger -t devvm "Install started: $?"
 
 logger -t devvm "Installing  plasma KDE $?"
 
-sudo apt-get install -q -y kubuntu-desktop
 sudo apt-get install -q -y plasma-workspace
 
 sudo apt-get -q -y update
