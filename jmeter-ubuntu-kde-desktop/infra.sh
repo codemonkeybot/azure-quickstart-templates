@@ -23,6 +23,12 @@ sudo apt-get -q -y upgrade
 
 logger -t devvm "Installed KDE $?"
 
+logger -t devvm "Installing  Firefox $?"
+sudo apt-get -q -y --no-install-recommends install firefox
+
+logger -t devvm "Installing  Dolphin $?"
+sudo apt-get -q -y --no-install-recommends install dolphin
+
 logger -t devvm "Installing AZUL Java $?"
     
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 
