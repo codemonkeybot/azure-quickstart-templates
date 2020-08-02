@@ -11,26 +11,11 @@ sudo apt-get -q -y --no-install-recommends install gnupg locales && \
     echo "$LANG UTF-8" >> /etc/locale.gen && \
     locale-gen 
 
-sudo locale-gen en_US.UTF-8 
+sudo apt update && \
+    apt upgrade -y && \
+    apt install -y plasma-desktop
 
-sudo apt-get install -y --no-install-recommends \
-      kwin-x11 \
-      plasma-desktop \
-      plasma-workspace \
-      kwin-wayland-backend-x11 \
-      kwin-wayland-backend-wayland \
-      plasma-workspace-wayland && \
-      sed -i 's/--libinput//' /usr/bin/startplasmacompositor
-    
-sudo apt-get install -y --no-install-recommends \
-      kubuntu-desktop \
-      plasma-active-default-settings \
-      samba \
-      firefox 
-
-# Dirty fix to avoid kdeinit error ind startkde. 
 sudo apt remove -y bluedevil && \
-    apt-get autoremove -y && \
     sed -i 's/.*kdeinit/###&/' /usr/bin/startkde
 
 sudo apt-get -q -y update
