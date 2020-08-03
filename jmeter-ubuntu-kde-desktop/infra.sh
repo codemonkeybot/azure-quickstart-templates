@@ -2,6 +2,18 @@
 
 logger -t devvm "Install started: $?"
 
+#############
+# Parameters
+#############
+
+AZUREUSER=$1
+HOMEDIR="/home/$AZUREUSER"
+VMNAME=`hostname`
+echo "User: $AZUREUSER"
+echo "User home dir: $HOMEDIR"
+echo "vmname: $VMNAME"
+
+
 logger -t devvm "Installing  plasma KDE $?"
 sudo apt-get -q -y update
 
