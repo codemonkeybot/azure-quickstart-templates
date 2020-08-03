@@ -103,5 +103,16 @@ sudo echo -e "\
 export LOCKPRG='/bin/true'"\
  >> ~/.bashrc
 
+####################
+# Setup Chrome
+####################
+cd /tmp
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get -y --force-yes install -f
+rm /tmp/google-chrome-stable_current_amd64.deb
+date
+
+
 logger -t devvm "Success"
 exit 0
