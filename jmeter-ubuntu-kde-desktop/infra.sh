@@ -13,7 +13,6 @@ echo "User: $AZUREUSER"
 echo "User home dir: $HOMEDIR"
 echo "vmname: $VMNAME"
 
-
 logger -t devvm "Installing  plasma KDE $?"
 sudo apt-get -q -y update
 
@@ -99,9 +98,7 @@ sudo apt-get install -q -y konsole
 logger -t devvm "Completed Install of Konsole $?"
 
 logger -t devvm "Suppress Screen Lockout Timeout - SSH Keys In Use $?"
-sudo echo -e "\  
-export LOCKPRG='/bin/true'"\
- >> ~/.bashrc
+sudo echo -e "export LOCKPRG=/bin/true" >> ~/.bashrc
 
 ####################
 # Setup Chrome
@@ -112,7 +109,6 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get -y --force-yes install -f
 rm /tmp/google-chrome-stable_current_amd64.deb
 date
-
 
 logger -t devvm "Success"
 exit 0
