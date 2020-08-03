@@ -93,10 +93,10 @@ sudo ufw allow from any to any port 9091 proto tcp
 
 logger -t devvm "Completed Install of JMeter 5.3 $?"
 
-logger -t devvm "Installing Kconsole $?"
-sudo apt-get install -q -y kconsole
+logger -t devvm "Installing Konsole $?"
+sudo apt-get install -q -y konsole
 
-logger -t devvm "Completed Install of Kconsole $?"
+logger -t devvm "Completed Install of Konsole $?"
 
 logger -t devvm "Suppress Screen Lockout Timeout - SSH Keys In Use $?"
 sudo echo -e "\  
