@@ -253,7 +253,7 @@
           "autoUpgradeMinorVersion": true,
           "settings": {
             "fileUris": [
-              "[uri(parameters('_artifactsLocation'), concat('infra.sh', parameters('_artifactsLocationSasToken')))]"
+              "[uri(parameters('_artifactsLocation'), concat('infra.sh', parameters('_artifactsLocationSasToken'), parameters('adminUsername')))]"
             ],
             "commandToExecute": "bash infra.sh"
           }
