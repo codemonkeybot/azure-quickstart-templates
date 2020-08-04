@@ -26,6 +26,18 @@ On KDE Desktop, create a desktop shortcut to /opt/apache-jmeter-5.3/bin/jmeter.s
 
 To open a terminal with Ctrl + Alt + t
 
+# Troubleshooting Deployment
+
+Login as root user to access /var/lib/waagent
+
+```bash
+sudo -i
+```
+
+The command output is also saved into this directory in stdout and stderr file.
+
+/var/lib/waagent/custom-script/download/0/
+
 ### Microsoft Learn - Learning Modules
 
 [Linux Virtual Machines on Azure](https://docs.microsoft.com/en-us/learn/browse/?term=Linux%20Virtual%20Machine)
