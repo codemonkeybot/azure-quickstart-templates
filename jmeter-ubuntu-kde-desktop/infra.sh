@@ -108,7 +108,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get -y --force-yes install -f
+sudo apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-packages install -f
 rm /tmp/google-chrome-stable_current_amd64.deb
 date
 
