@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Install started: $?"
+echo "Install started for User:  $1"
 
 #############
 # Parameters
@@ -13,7 +13,7 @@ echo "User: $AZUREUSER"
 echo "User home dir: $HOMEDIR"
 echo "vmname: $VMNAME"
 
-echo "Installing  plasma KDE $?"
+echo "Installing  plasma KDE for User:  $1"
 sudo apt-get -q -y update
 
 export  LANG=en_US.UTF-8
@@ -32,15 +32,15 @@ sudo apt remove -y bluedevil && \
 sudo apt-get -q -y update
 sudo apt-get -q -y upgrade
 
-echo "Installed KDE $?"
+echo "Installed KDE for User:  $1"
 
-echo "Installing  Firefox $?"
+echo "Installing  Firefox for User:  $1"
 sudo apt-get -q -y --no-install-recommends install firefox
 
-echo "Installing  Dolphin $?"
+echo "Installing  Dolphin for User:  $1"
 sudo apt-get -q -y --no-install-recommends install dolphin
 
-echo "Installing AZUL Java $?"
+echo "Installing AZUL Java for User:  $1"
     
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 
     
@@ -54,15 +54,15 @@ sudo apt-get -q -y --no-install-recommends install zulu-8=8.46.0.19
     
 sudo rm -rf /var/lib/apt/lists/*
 
-echo "Installed AZUL Java $?"
+echo "Installed AZUL Java $1"
 
-echo "Installing Software-Properites: $?"
+echo "Installing Software-Properites for User:  $1"
 
 apt-get install -q -y software-properties
 
-echo "Software-Properties installed: $?"
+echo "Software-Properties installed for User:  $1"
 
-echo "Installing X2Go Server $?"
+echo "Installing X2Go Server for User:  $1"
 
 sudo dpkg --configure -a
 
@@ -74,9 +74,9 @@ sudo apt-get -q -y upgrade
 
 sudo apt-get install -q -y x2goserver x2goserver-xsession
 
-echo "Installed X2Go Server $?"
+echo "Installed X2Go Server for User:  $1"
 
-echo "Installing JMeter 5.3 $?"
+echo "Installing JMeter 5.3 for User:  $1"
 
 sudo mkdir -p /tmp/dependencies  
 
@@ -90,19 +90,20 @@ sudo rm -rf /tmp/dependencies
 
 sudo ufw allow from any to any port 9091 proto tcp
 
-echo "Completed Install of JMeter 5.3 $?"
+echo "Completed Install of JMeter 5.3 for User:  $1"
 
-echo "Installing Konsole $?"
+echo "Installing Konsole for User:  $1"
 sudo apt-get install -q -y konsole
 
-echo "Completed Install of Konsole $?"
+echo "Completed Install of Konsole for User:  $1"
 
-echo "Suppress Screen Lockout Timeout - SSH Keys In Use $?"
-sudo echo -e "export LOCKPRG=/bin/true" >> ~/.bashrc
+#echo "Suppress Screen Lockout Timeout - SSH Keys In Use $1"
+#sudo echo -e "export LOCKPRG=/bin/true" >> ~/.bashrc
 
 ####################
 # Setup Chrome
 ####################
+echo "Installing Google Chrome for User: $1"
 cd /tmp
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -111,6 +112,6 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-packages install -f
 rm /tmp/google-chrome-stable_current_amd64.deb
 date
-
-echo "Success"
+echo "Completed Install Google Chrome for User: $1"
+echo "Success for User: $1"
 exit 0
