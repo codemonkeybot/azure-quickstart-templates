@@ -3,15 +3,15 @@
 This template creates a Linux workstation as follows:
 
 - Create a VM based on the Ubuntu 18.04-lts image 
-- Installs KDE Standard Desktop
+- Installs KDE Plasma Desktop
 - Installs JMeter 5.3
 - Installs Azul Java 8
 - Installs X2GoServer
 - Installs Dolphin
-- Installs Firefox
+- Installs Mozilla Firefox
+- Installs Google Chrome
 - Install Konsole
 - Opens Port 9091
-- Suppress Screen Lockout (Use for SSH Public and Private Key Authorization instead of password)
 
 This template creates a new Ubuntu VM with KDE Standard desktop enabled. 
 
@@ -36,7 +36,13 @@ sudo -i
 
 The command output is also saved into this directory in stdout and stderr file.
 
-/var/lib/waagent/custom-script/download/0/
+```bash
+cd /var/lib/waagent/custom-script/download/0/
+```
+
+# Disable KDE Screen Lock if using SSH public/private keys
+
+![Screen](./Images/disablescreenlock.png)
 
 ### Microsoft Learn - Learning Modules
 
