@@ -1,6 +1,6 @@
 #!/bin/bash
 
-logger -t devvm "Install started: $?"
+echo "Install started: $?"
 
 #############
 # Parameters
@@ -13,7 +13,7 @@ echo "User: $AZUREUSER"
 echo "User home dir: $HOMEDIR"
 echo "vmname: $VMNAME"
 
-logger -t devvm "Installing  plasma KDE $?"
+echo "Installing  plasma KDE $?"
 sudo apt-get -q -y update
 
 export  LANG=en_US.UTF-8
@@ -32,15 +32,15 @@ sudo apt remove -y bluedevil && \
 sudo apt-get -q -y update
 sudo apt-get -q -y upgrade
 
-logger -t devvm "Installed KDE $?"
+echo "Installed KDE $?"
 
-logger -t devvm "Installing  Firefox $?"
+echo "Installing  Firefox $?"
 sudo apt-get -q -y --no-install-recommends install firefox
 
-logger -t devvm "Installing  Dolphin $?"
+echo "Installing  Dolphin $?"
 sudo apt-get -q -y --no-install-recommends install dolphin
 
-logger -t devvm "Installing AZUL Java $?"
+echo "Installing AZUL Java $?"
     
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 
     
@@ -54,15 +54,15 @@ sudo apt-get -q -y --no-install-recommends install zulu-8=8.46.0.19
     
 sudo rm -rf /var/lib/apt/lists/*
 
-logger -t devvm "Installed AZUL Java $?"
+echo "Installed AZUL Java $?"
 
-logger -t devvm "Installing Software-Properites: $?"
+echo "Installing Software-Properites: $?"
 
 apt-get install -q -y software-properties
 
-logger -t devvm "Software-Properties installed: $?"
+echo "Software-Properties installed: $?"
 
-logger -t devvm "Installing X2Go Server $?"
+echo "Installing X2Go Server $?"
 
 sudo dpkg --configure -a
 
@@ -74,9 +74,9 @@ sudo apt-get -q -y upgrade
 
 sudo apt-get install -q -y x2goserver x2goserver-xsession
 
-logger -t devvm "Installed X2Go Server $?"
+echo "Installed X2Go Server $?"
 
-logger -t devvm "Installing JMeter 5.3 $?"
+echo "Installing JMeter 5.3 $?"
 
 sudo mkdir -p /tmp/dependencies  
 
@@ -90,14 +90,14 @@ sudo rm -rf /tmp/dependencies
 
 sudo ufw allow from any to any port 9091 proto tcp
 
-logger -t devvm "Completed Install of JMeter 5.3 $?"
+echo "Completed Install of JMeter 5.3 $?"
 
-logger -t devvm "Installing Konsole $?"
+echo "Installing Konsole $?"
 sudo apt-get install -q -y konsole
 
-logger -t devvm "Completed Install of Konsole $?"
+echo "Completed Install of Konsole $?"
 
-logger -t devvm "Suppress Screen Lockout Timeout - SSH Keys In Use $?"
+echo "Suppress Screen Lockout Timeout - SSH Keys In Use $?"
 sudo echo -e "export LOCKPRG=/bin/true" >> ~/.bashrc
 
 ####################
@@ -112,5 +112,5 @@ sudo apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-
 rm /tmp/google-chrome-stable_current_amd64.deb
 date
 
-logger -t devvm "Success"
+echo "Success"
 exit 0
