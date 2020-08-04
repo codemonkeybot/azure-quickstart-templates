@@ -1,6 +1,6 @@
-# Deploy an Ubuntu Mate Desktop VM with VSCode
+# Deploy an Ubuntu KDE Desktop VM with JMeter, Azul Java 8, X2GoServer, Dolphin, Mozilla Firefox and Google Chrome
 
-The purpose of this ARM Template is **Deploy an Ubuntu Mate Desktop VM with VSCode** inserting a few parameters.
+The purpose of this ARM Template is **Deploy an Ubuntu KDE Desktop VM with JMeter** inserting a few parameters.
 
 ## The Template
 
@@ -13,10 +13,10 @@ Parameter         | Suggested value     | Description
 **vmName** |[concat('VM', uniqueString(resourceGroup().name))]  | The name of you Virtual Machine.
 **VmSize** | Standard_B2s | The size of the VM.
 **adminUsername** | adminusername | Usernames can be a maximum of 20 characters and cannot end in a period (".").
-**adminPassword** | Complex Password | Password requirements between 12 to 72 characters and have lower and upper characters, a digit and a special character (Regex match [\W_])
+**adminPassword** | Complex Password or SSH Public Key | Password requirements between 12 to 72 characters and have lower and upper characters, a digit and a special character (Regex match [\W_]). If using SSH Public Key, be sure to disable KDE Screen Lock Feature.
 **Location**| The default location | Select the geographic location for your resource group.
 **ubuntuOSVersion** | 18.04-LTS | The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version.
-**authenticationType** | password | Type of authentication to use on the Virtual Machine.
+**authenticationType** | password or SSH Public Private Keys| Type of authentication to use on the Virtual Machine.
 **dnsLabelPrefix** | [toLower(parameters('vmName'))] | DNS Name for the Public IP used to access the Virtual Machine
 **virtualNetworkName** | vNet | Name of the VNET
 **subnetName** | subnet | Name of the subnet in the virtual network
@@ -108,7 +108,7 @@ And Voilà, there you have a brandy new Ubuntu Virtual Machine.
 
 Most important, don't forget to have fun!
 
-### Additional Installation Script will install MATE Desktop Azure CLI, Visual Studio Code and Remote Desktop
+### Additional Installation Script will install KDE Desktop with JMeter, Azul Java 8, Mozilla Firefox, Google Chrome, X2GoServer and Dolphin
 
 The installation of these additional software item is completed by the infra.sh the installation script is commented so you can understand each step which is completed.
 
@@ -144,11 +144,10 @@ After a couple of minutes, voilà, you have your Virtual Machine deployed.
 
 Go to the Resource. Repeat the test that you have done before.
 
-**p.s.: It's pretty easy to create resources on Azure, right? But if you are the sort of IT guy that always loves automation, here is the surprise. Just click on the button below and it will automatically deploy simple Linux Virtual Machine through the  Azure Portal.**
+**p.s.: It's pretty easy to create resources on Azure, right? But if you are the sort of IT guy that always loves automation, here is the surprise. Just click on the button below and it will automatically deploy this Linux Virtual Machine through the  Azure Portal.**
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-ubuntu-mate-desktop-vscode%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true"/>
-</a>
+[![Deploy To Azure](https://raw.githubusercontent.com/codemonkeybot/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fcodemonkeybot%2Fazure-quickstart-templates%2Fmaster%2Fjmeter-ubuntu-kde-desktop%2Fazuredeploy.json)  [![Visualize](https://raw.githubusercontent.com/codemonkeybot/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fcodemonkeybot%2Fazure-quickstart-templates%2Fmaster%2Fjmeter-ubuntu-kde-desktop%2Fazuredeploy.json)
+
 
 #### Important disclaimer: Azure charges you for the resources you are using, and you don't want to use all your credits at once, right? So, don't forget to stop the Virtual Machine at the portal or even delete the Resource Group you have created to avoid unnecessary charges
 
