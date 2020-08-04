@@ -255,7 +255,7 @@
             "fileUris": [
               "[uri(parameters('_artifactsLocation'), concat('infra.sh', parameters('_artifactsLocationSasToken')))]"
             ],
-            "commandToExecute": "bash infra.sh"
+            "commandToExecute": "[concat(parameters('adminUsername'),'bash infra.sh')]"
           }
         }
       }
