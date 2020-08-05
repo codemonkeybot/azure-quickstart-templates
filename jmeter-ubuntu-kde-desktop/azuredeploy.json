@@ -75,7 +75,7 @@
       "imageOffer": "UbuntuServer",
       "nicName": "nicJmeter",
       "nsgName": "nsgJmeter",
-      "addressPrefix": "10.0.0.0/16",
+      "addressPrefix": "10.0.0.0/24",
       "subnetName": "Subnet",
       "subnetPrefix": "10.0.0.0/24",
       "publicIPAddressName": "pipJmeter",
