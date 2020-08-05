@@ -97,6 +97,10 @@ sudo apt-get install -q -y konsole
 
 echo "Completed Install of Konsole for User:  $1"
 
+echo "Installing kgpg for User:  $1"
+sudo apt-get install -q -y kgpg
+echo "Completed Install of kgpg for User:  $1"
+
 #echo "Suppress Screen Lockout Timeout - SSH Keys In Use $1"
 #sudo echo -e "export LOCKPRG=/bin/true" >> ~/.bashrc
 

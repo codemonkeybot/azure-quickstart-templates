@@ -11,7 +11,8 @@ This template creates a Linux workstation as follows:
 - Installs Mozilla Firefox
 - Installs Google Chrome
 - Install Konsole
-- Opens Port 9091
+- Install KGpg is a graphical frontend to GnuPG for KDE, which includes a key management window and an editor
+- Opens Port 9091 for JMeter Automation
 
 This template creates a new Ubuntu VM with KDE Standard desktop enabled. 
 
