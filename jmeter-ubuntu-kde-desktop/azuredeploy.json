@@ -1,268 +1,253 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "String"
-        },
-        "networkInterfaceName": {
-            "type": "String"
-        },
-        "networkSecurityGroupName": {
-            "type": "String"
-        },
-        "networkSecurityGroupRules": {
-            "type": "Array"
-        },
-        "subnetName": {
-            "type": "String"
-        },
-        "virtualNetworkName": {
-            "type": "String"
-        },
-        "addressPrefixes": {
-            "type": "Array"
-        },
-        "subnets": {
-            "type": "Array"
-        },
-        "publicIpAddressName": {
-            "type": "String"
-        },
-        "publicIpAddressType": {
-            "type": "String"
-        },
-        "publicIpAddressSku": {
-            "type": "String"
-        },
-        "virtualMachineName": {
-            "type": "String"
-        },
-        "virtualMachineComputerName": {
-            "type": "String"
-        },
-        "virtualMachineRG": {
-            "type": "String"
-        },
-        "osDiskType": {
-            "type": "String"
-        },
-        "virtualMachineSize": {
-            "type": "String"
-        },
-        "adminUsername": {
-            "type": "String"
-        },
-        "adminPublicKey": {
-            "type": "SecureString"
-        },
-        "diagnosticsStorageAccountName": {
-            "type": "String"
-        },
-        "diagnosticsStorageAccountId": {
-            "type": "String"
-        },
-        "diagnosticsStorageAccountType": {
-            "type": "String"
-        },
-        "diagnosticsStorageAccountKind": {
-            "type": "String"
-        },
-      "_artifactsLocation": {
-        "type": "string",
-        "metadata": {
-          "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
-        },
-        "defaultValue": "https://raw.githubusercontent.com/codemonkeybot/azure-quickstart-templates/master/jmeter-ubuntu-kde-desktop/"
+   "$schema":"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion":"1.0.0.0",
+   "parameters":{
+      "location":{
+         "type":"String"
       },
-      "_artifactsLocationSasToken": {
-        "type": "securestring",
-        "metadata": {
-          "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
-        },
-        "defaultValue": ""
+      "networkInterfaceName":{
+         "type":"String"
+      },
+      "networkSecurityGroupName":{
+         "type":"String"
+      },
+      "networkSecurityGroupRules":{
+         "type":"Array"
+      },
+      "subnetName":{
+         "type":"String"
+      },
+      "virtualNetworkName":{
+         "type":"String"
+      },
+      "addressPrefixes":{
+         "type":"Array"
+      },
+      "subnets":{
+         "type":"Array"
+      },
+      "publicIpAddressName":{
+         "type":"String"
+      },
+      "publicIpAddressType":{
+         "type":"String"
+      },
+      "publicIpAddressSku":{
+         "type":"String"
+      },
+      "virtualMachineName":{
+         "type":"String"
+      },
+      "virtualMachineComputerName":{
+         "type":"String"
+      },
+      "virtualMachineRG":{
+         "type":"String"
+      },
+      "osDiskType":{
+         "type":"String"
+      },
+      "virtualMachineSize":{
+         "type":"String"
+      },
+      "adminUsername":{
+         "type":"String"
+      },
+      "adminPublicKey":{
+         "type":"SecureString"
+      },
+      "diagnosticsStorageAccountName":{
+         "type":"String"
+      },
+      "diagnosticsStorageAccountId":{
+         "type":"String"
+      },
+      "diagnosticsStorageAccountType":{
+         "type":"String"
+      },
+      "diagnosticsStorageAccountKind":{
+         "type":"String"
+      },
+      "_artifactsLocation":{
+         "type":"string",
+         "metadata":{
+            "description":"The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
+         },
+         "defaultValue":"https://raw.githubusercontent.com/codemonkeybot/azure-quickstart-templates/master/jmeter-ubuntu-kde-desktop/"
+      },
+      "_artifactsLocationSasToken":{
+         "type":"securestring",
+         "metadata":{
+            "description":"The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+         },
+         "defaultValue":""
       }
-    },
-    "variables": {
-        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2019-07-01",
-            "name": "[parameters('networkInterfaceName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
-                "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
+   },
+   "variables":{
+      "nsgId":"[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
+      "vnetId":"[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+      "subnetRef":"[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
+   },
+   "resources":[
+      {
+         "type":"Microsoft.Network/networkInterfaces",
+         "apiVersion":"2019-07-01",
+         "name":"[parameters('networkInterfaceName')]",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
+            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+            "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
+         ],
+         "properties":{
+            "ipConfigurations":[
+               {
+                  "name":"ipconfig1",
+                  "properties":{
+                     "subnet":{
+                        "id":"[variables('subnetRef')]"
+                     },
+                     "privateIPAllocationMethod":"Dynamic",
+                     "publicIpAddress":{
+                        "id":"[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                     }
+                  }
+               }
             ],
-            "tags": {
-                "organization": "csvi"
-            },
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIpAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
-                            }
-                        }
-                    }
-                ],
-                "networkSecurityGroup": {
-                    "id": "[variables('nsgId')]"
-                }
+            "networkSecurityGroup":{
+               "id":"[variables('nsgId')]"
             }
-        },
-        {
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2019-02-01",
-            "name": "[parameters('networkSecurityGroupName')]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "organization": "csvi"
+         }
+      },
+      {
+         "type":"Microsoft.Network/networkSecurityGroups",
+         "apiVersion":"2019-02-01",
+         "name":"[parameters('networkSecurityGroupName')]",
+         "location":"[parameters('location')]",
+         "properties":{
+            "securityRules":"[parameters('networkSecurityGroupRules')]"
+         }
+      },
+      {
+         "type":"Microsoft.Network/virtualNetworks",
+         "apiVersion":"2019-09-01",
+         "name":"[parameters('virtualNetworkName')]",
+         "location":"[parameters('location')]",
+         "properties":{
+            "addressSpace":{
+               "addressPrefixes":"[parameters('addressPrefixes')]"
             },
-            "properties": {
-                "securityRules": "[parameters('networkSecurityGroupRules')]"
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-09-01",
-            "name": "[parameters('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "organization": "csvi"
+            "subnets":"[parameters('subnets')]"
+         }
+      },
+      {
+         "type":"Microsoft.Network/publicIpAddresses",
+         "apiVersion":"2019-02-01",
+         "name":"[parameters('publicIpAddressName')]",
+         "location":"[parameters('location')]",
+         "sku":{
+            "name":"[parameters('publicIpAddressSku')]"
+         },
+         "properties":{
+            "publicIpAllocationMethod":"[parameters('publicIpAddressType')]"
+         }
+      },
+      {
+         "type":"Microsoft.Compute/virtualMachines",
+         "apiVersion":"2019-07-01",
+         "name":"[parameters('virtualMachineName')]",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
+            "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
+         ],
+         "properties":{
+            "hardwareProfile":{
+               "vmSize":"[parameters('virtualMachineSize')]"
             },
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPrefixes')]"
-                },
-                "subnets": "[parameters('subnets')]"
-            }
-        },
-        {
-            "type": "Microsoft.Network/publicIpAddresses",
-            "apiVersion": "2019-02-01",
-            "name": "[parameters('publicIpAddressName')]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "organization": "csvi"
+            "storageProfile":{
+               "osDisk":{
+                  "createOption":"fromImage",
+                  "managedDisk":{
+                     "storageAccountType":"[parameters('osDiskType')]"
+                  }
+               },
+               "imageReference":{
+                  "publisher":"Canonical",
+                  "offer":"UbuntuServer",
+                  "sku":"18.04-LTS",
+                  "version":"latest"
+               }
             },
-            "sku": {
-                "name": "[parameters('publicIpAddressSku')]"
+            "networkProfile":{
+               "networkInterfaces":[
+                  {
+                     "id":"[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+                  }
+               ]
             },
-            "properties": {
-                "publicIpAllocationMethod": "[parameters('publicIpAddressType')]"
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2019-07-01",
-            "name": "[parameters('virtualMachineName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
-            ],
-            "tags": {
-                "organization": "csvi"
-            },
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('virtualMachineSize')]"
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "fromImage",
-                        "managedDisk": {
-                            "storageAccountType": "[parameters('osDiskType')]"
-                        }
-                    },
-                    "imageReference": {
-                        "publisher": "Canonical",
-                        "offer": "UbuntuServer",
-                        "sku": "18.04-LTS",
-                        "version": "latest"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
+            "osProfile":{
+               "computerName":"[parameters('virtualMachineComputerName')]",
+               "adminUsername":"[parameters('adminUsername')]",
+               "linuxConfiguration":{
+                  "disablePasswordAuthentication":true,
+                  "ssh":{
+                     "publicKeys":[
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+                           "path":"[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
+                           "keyData":"[parameters('adminPublicKey')]"
                         }
-                    ]
-                },
-                "osProfile": {
-                    "computerName": "[parameters('virtualMachineComputerName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "linuxConfiguration": {
-                        "disablePasswordAuthentication": true,
-                        "ssh": {
-                            "publicKeys": [
-                                {
-                                    "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
-                                    "keyData": "[parameters('adminPublicKey')]"
-                                }
-                            ]
-                        }
-                    }
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
-                    }
-                }
+                     ]
+                  }
+               }
+            },
+            "diagnosticsProfile":{
+               "bootDiagnostics":{
+                  "enabled":true,
+                  "storageUri":"[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
+               }
             }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[parameters('diagnosticsStorageAccountName')]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "organization": "csvi"
-            },
-            "sku": {
-                "name": "[parameters('diagnosticsStorageAccountType')]"
-            },
-            "kind": "[parameters('diagnosticsStorageAccountKind')]",
-            "properties": {}
-        } {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(parameters('vmName'),'/installscript')]",
-        "apiVersion": "2019-07-01",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-          "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
-        ],
-        "properties": {
-          "publisher": "Microsoft.Azure.Extensions",
-          "type": "CustomScript",
-          "typeHandlerVersion": "2.0",
-          "autoUpgradeMinorVersion": true,
-          "settings": {
-            "fileUris": [
-              "[uri(parameters('_artifactsLocation'), concat('infra.sh', parameters('_artifactsLocationSasToken')))]"
-            ],
-            "commandToExecute": "[concat('bash infra.sh ',parameters('adminUsername'))]"
-          }
-        }
+         }
+      },
+      {
+         "type":"Microsoft.Storage/storageAccounts",
+         "apiVersion":"2019-06-01",
+         "name":"[parameters('diagnosticsStorageAccountName')]",
+         "location":"[parameters('location')]",
+         "sku":{
+            "name":"[parameters('diagnosticsStorageAccountType')]"
+         },
+         "kind":"[parameters('diagnosticsStorageAccountKind')]",
+         "properties":{
+
+         }
+      },
+      {
+         "type":"Microsoft.Compute/virtualMachines/extensions",
+         "name":"[concat(parameters('virtualMachineName'),'/installscript')]",
+         "apiVersion":"2019-07-01",
+         "location":"[parameters('location')]",
+         "dependsOn":[
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
+         ],
+         "properties":{
+            "publisher":"Microsoft.Azure.Extensions",
+            "type":"CustomScript",
+            "typeHandlerVersion":"2.0",
+            "autoUpgradeMinorVersion":true,
+            "settings":{
+               "fileUris":[
+                  "[uri(parameters('_artifactsLocation'), concat('infra.sh', parameters('_artifactsLocationSasToken')))]"
+               ],
+               "commandToExecute":"[concat('bash infra.sh ',parameters('adminUsername'))]"
+            }
+         }
       }
-    ],
-    "outputs": {
-        "adminUsername": {
-            "type": "String",
-            "value": "[parameters('adminUsername')]"
-        }
-    }
+   ],
+   "outputs":{
+      "adminUsername":{
+         "type":"String",
+         "value":"[parameters('adminUsername')]"
+      }
+   }
 }

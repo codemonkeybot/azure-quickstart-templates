@@ -92,6 +92,12 @@
     },
     "diagnosticsStorageAccountKind": {
       "value": "Storage"
+    },
+    "_artifactsLocation": {
+        "value": "https://raw.githubusercontent.com/codemonkeybot/azure-quickstart-templates/master/jmeter-ubuntu-kde-desktop/"
+    },
+    "_artifactsLocationSasToken": {
+        "value": ""
     }
   }
 }
