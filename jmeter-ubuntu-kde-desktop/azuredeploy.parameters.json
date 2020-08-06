@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualMachineName": {
+    "vmName": {
       "value": "GEN-UNIQUE"
     },
     "adminUsername": {
@@ -10,94 +10,6 @@
     },
     "adminPasswordOrKey": {
       "value": "GEN-SSH-PUB-KEY"
-    },
-    "networkSecurityGroupRules": {
-      "value": [
-        {
-          "name": "SSH",
-          "properties": {
-            "priority": 300,
-            "protocol": "TCP",
-            "access": "Allow",
-            "direction": "Inbound",
-            "sourceAddressPrefix": "*",
-            "sourcePortRange": "*",
-            "destinationAddressPrefix": "*",
-            "destinationPortRange": "22"
-          }
-        },
-        {
-          "name": "HTTP",
-          "properties": {
-            "priority": 320,
-            "protocol": "TCP",
-            "access": "Allow",
-            "direction": "Inbound",
-            "sourceAddressPrefix": "*",
-            "sourcePortRange": "*",
-            "destinationAddressPrefix": "*",
-            "destinationPortRange": "80"
-          }
-        },
-        {
-          "name": "HTTPS",
-          "properties": {
-            "priority": 340,
-            "protocol": "TCP",
-            "access": "Allow",
-            "direction": "Inbound",
-            "sourceAddressPrefix": "*",
-            "sourcePortRange": "*",
-            "destinationAddressPrefix": "*",
-            "destinationPortRange": "443"
-          }
-        }
-      ]
-    },
-    "subnetName": {
-      "value": "default"
-    },
-    "addressPrefixes": {
-      "value": [
-        "10.0.0.0/24"
-      ]
-    },
-    "subnets": {
-      "value": [
-        {
-          "name": "default",
-          "properties": {
-            "addressPrefix": "10.0.0.0/24"
-          }
-        }
-      ]
-    },
-    "publicIpAddressType": {
-      "value": "Dynamic"
-    },
-    "publicIpAddressSku": {
-      "value": "Basic"
-    },
-    "osDiskType": {
-      "value": "Premium_LRS"
-    },
-    "virtualMachineSize": {
-      "value": "Standard_D2s_v3"
-    },
-    "adminPublicKey": {
-      "value": null
-    },
-    "diagnosticsStorageAccountType": {
-      "value": "Standard_LRS"
-    },
-    "diagnosticsStorageAccountKind": {
-      "value": "Storage"
-    },
-    "_artifactsLocation": {
-        "value": "https://raw.githubusercontent.com/codemonkeybot/azure-quickstart-templates/master/jmeter-ubuntu-kde-desktop/"
-    },
-    "_artifactsLocationSasToken": {
-        "value": ""
     }
   }
 }

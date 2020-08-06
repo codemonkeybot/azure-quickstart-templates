@@ -1,4 +1,4 @@
-# Deploy an Ubuntu KDE VM with JMeter and X2GoServer
+## Deploy an Ubuntu KDE VM with JMeter and X2GoServer
 
 This template creates a Linux workstation as follows:
 
@@ -13,7 +13,6 @@ This template creates a Linux workstation as follows:
 - Install Konsole
 - Install KGpg is a graphical frontend to GnuPG for KDE, which includes a key management window and an editor
 - Opens Port 9091 for JMeter Automation
-- Revised to support prompting of all available prompt parameters
 
 This template creates a new Ubuntu VM with KDE Standard desktop enabled. 
 
