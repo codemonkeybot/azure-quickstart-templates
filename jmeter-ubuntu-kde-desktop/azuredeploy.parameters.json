@@ -10,6 +10,9 @@
     },
     "adminPasswordOrKey": {
       "value": "GEN-SSH-PUB-KEY"
+    },
+    "dnsLabelPrefix": {
+      "value": "GEN-UNIQUE"
     }
   }
 }
